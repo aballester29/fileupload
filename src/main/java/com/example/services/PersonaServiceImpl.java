@@ -31,5 +31,12 @@ public class PersonaServiceImpl implements PersonaService{
         personaDao.save(persona);
         
     }
+
+    @Override
+    public void delete(Persona persona) {
+
+        personaDao.deleteById(persona.getId());
+        
+    }
     
 }
