@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:insert="base :: cabecera">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personas</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>Listado de personas</h1>
+            <a class="btn btn-primary w-50 m-auto" th:href="@{/alta}" role="button">Añadir persona</a>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="persona : ${personas}">
+                        <td th:text="${persona.nombre}"></td>
+                        <td th:text="${persona.apellido}"></td>
+                        <td><a class="btn btn-outline-info" th:href="@{/detalle/} + ${persona.Id}">Detalle</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script th:replace="base :: script"></script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="base :: cabecera">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario empleado</title>
+</head>
+<body>
+    <h1>Formulario de alta Empleado</h1>
+
+    <form th:action="@{/guardar/} + ${persona.Id}" method="post" th:object="${persona}">
+        <input class="form-control" type="text" placeholder="Nombre: " th:field="*{nombre}">
+        <br>
+        <input class="form-control" type="text" placeholder="Primer apellido: " th:field="*{apellido}"> 
+        <br>
+        <select class="form-select" id="paises" name="paises">
+                <option th:each=" pais : ${paises}" 
+                    th:value="${pais.Id}" 
+                        th:text="${pais.Nombre}" 
+                        th:selected="${persona.Id} != 0 ? ${pais} == ${persona.pais} : false"></option>
+        </select>
+        <br>
+        <input type="file" name="file">
+        <br>
+        <input class="btn btn-primary" type="submit">
+        <a class="btn btn-primary" th:href="@{/listar}">Volver</a>
+    </form>
+
+</body>
+</html>
